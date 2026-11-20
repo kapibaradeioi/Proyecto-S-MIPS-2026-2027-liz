@@ -3876,6 +3876,10 @@
     <a name="circuit" val="Immediate_Extender"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(120,200)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="IMM_SIGN"/>
+    </comp>
     <comp lib="0" loc="(150,140)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="label" val="IMM16"/>
@@ -3886,8 +3890,7 @@
       <a name="label" val="SHAMT"/>
       <a name="width" val="5"/>
     </comp>
-    <comp lib="0" loc="(150,200)" name="Pin">
-      <a name="appearance" val="classic"/>
+    <comp lib="0" loc="(150,200)" name="Tunnel">
       <a name="label" val="IMM_SIGN"/>
     </comp>
     <comp lib="0" loc="(180,140)" name="Tunnel">
@@ -3897,9 +3900,6 @@
     <comp lib="0" loc="(180,170)" name="Tunnel">
       <a name="label" val="SHAMT"/>
       <a name="width" val="5"/>
-    </comp>
-    <comp lib="0" loc="(180,200)" name="Tunnel">
-      <a name="label" val="IMM_SIGN"/>
     </comp>
     <comp lib="0" loc="(350,380)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -3931,7 +3931,7 @@
     </comp>
     <comp lib="0" loc="(390,200)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="IMM_EXT"/>
+      <a name="label" val="IMM_SIGN_EXT"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(430,380)" name="Bit Extender">
@@ -3954,6 +3954,10 @@
     </comp>
     <comp lib="0" loc="(470,300)" name="Tunnel">
       <a name="label" val="LUI_VAL"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(490,170)" name="Tunnel">
+      <a name="label" val="IMM_SIGN_EXT"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(530,110)" name="Tunnel">
@@ -4016,9 +4020,9 @@
     <comp lib="3" loc="(450,300)" name="Shifter">
       <a name="width" val="32"/>
     </comp>
+    <wire from="(120,200)" to="(150,200)"/>
     <wire from="(150,140)" to="(180,140)"/>
     <wire from="(150,170)" to="(180,170)"/>
-    <wire from="(150,200)" to="(180,200)"/>
     <wire from="(350,380)" to="(390,380)"/>
     <wire from="(370,310)" to="(410,310)"/>
     <wire from="(380,100)" to="(410,100)"/>
@@ -4027,10 +4031,13 @@
     <wire from="(380,50)" to="(410,50)"/>
     <wire from="(390,200)" to="(410,200)"/>
     <wire from="(430,380)" to="(790,380)"/>
-    <wire from="(450,100)" to="(480,100)"/>
+    <wire from="(450,100)" to="(460,100)"/>
     <wire from="(450,210)" to="(470,210)"/>
     <wire from="(450,300)" to="(470,300)"/>
     <wire from="(450,50)" to="(480,50)"/>
+    <wire from="(460,100)" to="(460,170)"/>
+    <wire from="(460,100)" to="(480,100)"/>
+    <wire from="(460,170)" to="(490,170)"/>
     <wire from="(480,50)" to="(480,60)"/>
     <wire from="(480,60)" to="(520,60)"/>
     <wire from="(480,80)" to="(480,100)"/>
@@ -6374,5 +6381,122 @@
     <wire from="(780,370)" to="(820,370)"/>
     <wire from="(780,500)" to="(820,500)"/>
     <wire from="(780,640)" to="(810,640)"/>
+  </circuit>
+  <circuit name="Branch_Control">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="Branch_Control"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(150,140)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="PC_WRITE"/>
+    </comp>
+    <comp lib="0" loc="(150,180)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="PC_WRITE_COND"/>
+    </comp>
+    <comp lib="0" loc="(150,220)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="IS_BEQ"/>
+    </comp>
+    <comp lib="0" loc="(150,260)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="IS_BNE"/>
+    </comp>
+    <comp lib="0" loc="(150,300)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="ZERO"/>
+    </comp>
+    <comp lib="0" loc="(200,140)" name="Tunnel">
+      <a name="label" val="PC_WRITE"/>
+    </comp>
+    <comp lib="0" loc="(200,180)" name="Tunnel">
+      <a name="label" val="PC_WRITE_COND"/>
+    </comp>
+    <comp lib="0" loc="(200,220)" name="Tunnel">
+      <a name="label" val="IS_BEQ"/>
+    </comp>
+    <comp lib="0" loc="(200,260)" name="Tunnel">
+      <a name="label" val="IS_BNE"/>
+    </comp>
+    <comp lib="0" loc="(200,300)" name="Tunnel">
+      <a name="label" val="ZERO"/>
+    </comp>
+    <comp lib="0" loc="(470,180)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="ZERO"/>
+    </comp>
+    <comp lib="0" loc="(470,210)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="IS_BNE"/>
+    </comp>
+    <comp lib="0" loc="(470,240)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="ZERO"/>
+    </comp>
+    <comp lib="0" loc="(470,270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="IS_BEQ"/>
+    </comp>
+    <comp lib="0" loc="(550,300)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="PC_WRITE_COND"/>
+    </comp>
+    <comp lib="0" loc="(690,300)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="PC_WRITE"/>
+    </comp>
+    <comp lib="0" loc="(780,270)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="PC_WE"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="1" loc="(530,200)" name="AND Gate">
+      <a name="negate0" val="true"/>
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(530,250)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(590,230)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(670,260)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(760,270)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <wire from="(150,140)" to="(200,140)"/>
+    <wire from="(150,180)" to="(200,180)"/>
+    <wire from="(150,220)" to="(200,220)"/>
+    <wire from="(150,260)" to="(200,260)"/>
+    <wire from="(150,300)" to="(200,300)"/>
+    <wire from="(470,180)" to="(480,180)"/>
+    <wire from="(470,210)" to="(500,210)"/>
+    <wire from="(470,240)" to="(500,240)"/>
+    <wire from="(470,270)" to="(480,270)"/>
+    <wire from="(480,180)" to="(480,190)"/>
+    <wire from="(480,190)" to="(490,190)"/>
+    <wire from="(480,260)" to="(480,270)"/>
+    <wire from="(480,260)" to="(500,260)"/>
+    <wire from="(530,200)" to="(550,200)"/>
+    <wire from="(530,250)" to="(550,250)"/>
+    <wire from="(550,200)" to="(550,220)"/>
+    <wire from="(550,220)" to="(560,220)"/>
+    <wire from="(550,240)" to="(550,250)"/>
+    <wire from="(550,240)" to="(560,240)"/>
+    <wire from="(550,300)" to="(600,300)"/>
+    <wire from="(590,230)" to="(600,230)"/>
+    <wire from="(600,230)" to="(600,250)"/>
+    <wire from="(600,250)" to="(640,250)"/>
+    <wire from="(600,270)" to="(600,300)"/>
+    <wire from="(600,270)" to="(640,270)"/>
+    <wire from="(670,260)" to="(730,260)"/>
+    <wire from="(690,300)" to="(710,300)"/>
+    <wire from="(710,280)" to="(710,300)"/>
+    <wire from="(710,280)" to="(730,280)"/>
+    <wire from="(760,270)" to="(780,270)"/>
   </circuit>
 </project>
